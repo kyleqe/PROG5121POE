@@ -21,6 +21,13 @@ public class LoginTest {
         assertEquals(true, user.checkPasswordComplexity());
     }
     
+     @Test
+    public void testIncorrectPassword() {
+        Login user = new Login("Kyle", "Hove", "kyl_1",
+                "password", "+27838968976");
+        assertEquals(false, user.checkPasswordComplexity());
+    }
+    
     
     
 }
