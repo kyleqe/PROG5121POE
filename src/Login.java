@@ -44,4 +44,9 @@ public class Login {
 
         return hasCapitalLetter && hasNumber && hasSpecialCharacter;
       }
+      //check phone number if it is a SA number
+       public boolean checkCellPhoneNumber() {
+        String phoneRegex = "^\\+27[0-9]{9}$";
+        return cellPhoneNumber != null && cellPhoneNumber.matches(phoneRegex);
+    }
 }
