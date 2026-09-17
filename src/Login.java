@@ -49,4 +49,21 @@ public class Login {
         String phoneRegex = "^\\+27[0-9]{9}$";
         return cellPhoneNumber != null && cellPhoneNumber.matches(phoneRegex);
     }
+       
+       public String registerUser() {
+        if (!checkUserName()) {
+            return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
+        }
+
+        if (!checkPasswordComplexity()) {
+            return "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.";
+        }
+
+        if (!checkCellPhoneNumber()) {
+            return "Cell phone number incorrectly formatted or does not contain international code.";
+        }
+
+        return "User successfully registered.";
+    }
+
 }
