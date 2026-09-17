@@ -41,4 +41,12 @@ public class LoginTest {
                 "Ch&&sec@ke99!", "08966553");
         assertEquals(false, user.checkCellPhoneNumber());
     }
+    
+    @Test
+    public void testSuccessfulLogin() {
+        Login user = new Login("Kyle", "Hove", "kyl_1",
+                "Ch&&sec@ke99!", "+27838968976");
+        user.setLoginDetails("kyl_1", "Ch&&sec@ke99!");
+        assertTrue(user.loginUser());
+    }
 }
