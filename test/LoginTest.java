@@ -35,4 +35,10 @@ public class LoginTest {
         assertEquals(true, user.checkCellPhoneNumber());
     }
     
+    @Test
+    public void testIncorrectCellPhone() {
+        Login user = new Login("Kyle", "Hove", "kyl_1",
+                "Ch&&sec@ke99!", "08966553");
+        assertEquals(false, user.checkCellPhoneNumber());
+    }
 }
