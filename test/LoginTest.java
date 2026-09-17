@@ -49,4 +49,13 @@ public class LoginTest {
         user.setLoginDetails("kyl_1", "Ch&&sec@ke99!");
         assertTrue(user.loginUser());
     }
+    
+     @Test
+    public void testFailedLogin() {
+        Login user = new Login("Kyle", "Hove", "kyl_1",
+                "Ch&&sec@ke99!", "+27838968976");
+        user.setLoginDetails("wrong", "wrongpassword");
+        assertFalse(user.loginUser());
+    }
+
 }
