@@ -15,4 +15,10 @@ public class Login {
         this.password = password;
         this.cellPhoneNumber = cellPhoneNumber;
     }
+     // checks user name 
+      public boolean checkUserName() {
+        return username != null
+                && username.contains("_")
+                && username.length() <= 5;
+    }
 }
