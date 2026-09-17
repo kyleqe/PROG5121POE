@@ -73,3 +73,13 @@ public class LoginTest {
                 "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.",
                 user.registerUser());
 }
+  
+     @Test
+    public void testIncorrectPasswordMessage(){
+        Login user = new Login("Kyle", "Hove", "kyl_1",
+                "password", "+27838968976");
+        assertEquals(
+                "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.",
+                user.registerUser());
+    }
+}
