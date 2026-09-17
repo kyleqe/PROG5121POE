@@ -28,6 +28,4 @@ public class LoginTest {
         assertEquals(false, user.checkPasswordComplexity());
     }
     
-    
-    
 }
