@@ -7,6 +7,13 @@ public class LoginTest {
         assertEquals(true, user.checkUserName());
     }
     
+    @Test
+    public void testIncorrectUsername() {
+        Login user = new Login("Kyle", "Hove", "kyle!!!!!!!",
+                "Ch&&sec@ke99!", "+27838968976");
+        assertEquals(false, user.checkUserName());
+    }
+    
     
     
 }
