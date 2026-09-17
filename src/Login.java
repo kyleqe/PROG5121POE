@@ -21,4 +21,9 @@ public class Login {
                 && username.contains("_")
                 && username.length() <= 5;
     }
+      // check password 
+      public boolean checkPasswordComplexity() {
+        if (password == null || password.length() < 8) {
+            return false;
+        }
 }
