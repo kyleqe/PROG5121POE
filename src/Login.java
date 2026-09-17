@@ -66,4 +66,8 @@ public class Login {
         return "User successfully registered.";
     }
 
+        public void setLoginDetails(String loginUsername, String loginPassword) {
+        this.loginUsername = loginUsername;
+        this.loginPassword = loginPassword;
+    }
 }
