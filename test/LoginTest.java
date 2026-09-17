@@ -65,4 +65,11 @@ public class LoginTest {
         assertEquals("User successfully registered.", user.registerUser());
     }
 
+     @Test
+    public void testIncorrectUsernameMessage() {
+        Login user = new Login("Kyle", "Hove", "kyle!!!!!!!",
+                "Ch&&sec@ke99!", "+27838968976");
+        assertEquals(
+                "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.",
+                user.registerUser());
 }
