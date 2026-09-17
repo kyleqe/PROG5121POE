@@ -70,4 +70,10 @@ public class Login {
         this.loginUsername = loginUsername;
         this.loginPassword = loginPassword;
     }
+         public boolean loginUser() {
+        return username != null
+                && password != null
+                && username.equals(loginUsername)
+                && password.equals(loginPassword);
+    }
 }
