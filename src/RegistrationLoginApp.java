@@ -52,6 +52,27 @@ public class RegistrationLoginApp {
             System.out.println("Cell phone number incorrectly formatted or does not contain international code.");
         }
         
-        
+         if (user.checkUserName()
+                && user.checkPasswordComplexity()
+                && user.checkCellPhoneNumber()) {
+
+            System.out.println("User successfully registered.");
+
+            System.out.println("\n            LOGIN            ");
+
+            System.out.print("Enter your username: ");
+            String loginUsername = input.nextLine();
+
+            System.out.print("Enter your password: ");
+            String loginPassword = input.nextLine();
+
+            user.setLoginDetails(loginUsername, loginPassword);
+            System.out.println(user.returnLoginStatus());
+        } else {
+            System.out.println("\nRegistration unsuccessful. Please correct the information above.");
+        }
+
+        input.close();
+    
     }
 }
