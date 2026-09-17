@@ -26,4 +26,22 @@ public class Login {
         if (password == null || password.length() < 8) {
             return false;
         }
+        boolean hasCapitalLetter = false;
+        boolean hasNumber = false;
+        boolean hasSpecialCharacter = false;
+
+        for (int index = 0; index < password.length(); index++) {
+            char character = password.charAt(index);
+
+            if (Character.isUpperCase(character)) {
+                hasCapitalLetter = true;
+            } else if (Character.isDigit(character)) {
+                hasNumber = true;
+            } else if (!Character.isLetterOrDigit(character)) {
+                hasSpecialCharacter = true;
+            }
+        }
+
+        return hasCapitalLetter && hasNumber && hasSpecialCharacter;
+      }
 }
