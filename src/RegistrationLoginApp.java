@@ -23,6 +23,13 @@ public class RegistrationLoginApp {
 
         System.out.print("Enter your South African cell phone number: ");
         String cellPhoneNumber = input.nextLine();
-
+        // Attributes from login
+        Login user = new Login(
+                firstName,
+                lastName,
+                username,
+                password,
+                cellPhoneNumber
+        );
     }
 }
