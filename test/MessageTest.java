@@ -45,4 +45,11 @@ public class MessageTest {
                 "Hi Mike, can you join us for dinner tonight?");
         assertEquals("Message sent", m.checkMessageLength());
     }
+    
+    @Test
+    public void testMessageLength250Characters() {
+        String text = new String(new char[250]).replace('\0', 'a');
+        Message m = new Message(0, "+27718693002", text);
+        assertEquals("Message sent", m.checkMessageLength());
+    }
 }
