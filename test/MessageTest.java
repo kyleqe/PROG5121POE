@@ -75,4 +75,12 @@ public class MessageTest {
                 "Hi Mike, can you join us for dinner tonight?");
         assertEquals(true, m.createMessageHash().matches("\\d{2}:0:HITONIGHT"));
     }
+    
+    @Test
+    public void testMessageHashSecondMessage() {
+        Message m = new Message(1, "+27718693002",
+                "Hi Keegan, did you receive the payment?");
+        assertEquals(true, m.getMessageHash().matches("\\d{2}:1:HIPAYMENT"));
+    }
+    
 }
