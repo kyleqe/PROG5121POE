@@ -34,6 +34,9 @@ public class QuickChart {
                 default: System.out.println("Invalid option. Please enter 1, 2, or 3.");
             }
         }
+        System.out.println("Total messages successfully sent: " + Message.returnTotalMessagess());
     }
+    
+    
  
 }
