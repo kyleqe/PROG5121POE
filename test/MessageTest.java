@@ -98,4 +98,14 @@ public class MessageTest {
                 "Hi Mike, can you join us for dinner tonight?").SentMessage(1);
         assertEquals(1, Message.returnTotalMessagess());
     }
+    
+     @Test
+    public void testDisregardedMessageNotCounted() {
+        Message.resetAll();
+        new Message(0, "+27718693002",
+                "Hi Mike, can you join us for dinner tonight?").SentMessage(1);
+        new Message(1, "+27718693002",
+                "Hi Keegan, did you receive the payment?").SentMessage(2);
+        assertEquals(1, Message.returnTotalMessagess());
+    }
 }
