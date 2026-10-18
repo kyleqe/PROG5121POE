@@ -10,4 +10,10 @@ import static org.junit.Assert.*;
  */
 public class MessageTest {
     
+    @Test
+    public void testMessageIDCreated() {
+        Message m = new Message(0, "+27718693002",
+                "Hi Mike, can you join us for dinner tonight?");
+        assertEquals(true, m.checkMessageID());
+    }
 }
