@@ -54,7 +54,13 @@ public class QuickChart {
             System.out.println("You have reached the message limit you selected.");
             return;
         }
-    }    
+        while (processedCount < limit) {
+            int number = processedCount;
+            System.out.println("\n--- Message " + (number + 1) + " of " + limit + " ---");
+        }    
+    }
+    
+    
     
  
 }
