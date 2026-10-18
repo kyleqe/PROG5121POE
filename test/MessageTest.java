@@ -16,4 +16,11 @@ public class MessageTest {
                 "Hi Mike, can you join us for dinner tonight?");
         assertEquals(true, m.checkMessageID());
     }
+    
+     @Test
+    public void testMessageIDHasTenDigits() {
+        Message m = new Message(0, "+27718693002",
+                "Hi Mike, can you join us for dinner tonight?");
+        assertEquals(10, m.getMessageId().length());
+    }
 }
