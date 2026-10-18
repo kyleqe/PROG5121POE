@@ -57,7 +57,8 @@ public class RegistrationLoginApp {
                 && user.checkCellPhoneNumber()) {
 
             System.out.println("User successfully registered.");
-
+            boolean loggedIn = false;
+            for (int attempt = 1; attempt <= 3 && !loggedIn; attempt++){
             System.out.println("\n            LOGIN            ");
 
             System.out.print("Enter your username: ");
@@ -68,7 +69,14 @@ public class RegistrationLoginApp {
 
             user.setLoginDetails(loginUsername, loginPassword);
             System.out.println(user.returnLoginStatus());
-        } else {
+        }
+            if (loggedIn){
+                QuickChart.start(input);
+            } else {
+                System.out.println("Too many failed attempts. You cannot access QuickChat.");
+            }
+            
+            } else {
             System.out.println("\nRegistration unsuccessful. Please correct the information above.");
         }
 
