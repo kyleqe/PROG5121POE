@@ -108,4 +108,17 @@ public class MessageTest {
                 "Hi Keegan, did you receive the payment?").SentMessage(2);
         assertEquals(1, Message.returnTotalMessagess());
     }
+    
+    @Test
+    public void testPrintMessages() {
+        Message.resetAll();
+        Message m = new Message(0, "+27718693002",
+                "Hi Mike, can you join us for dinner tonight?");
+        m.SentMessage(1);
+        String expected = "Message ID: " + m.getMessageId()
+                + "\nMessage Hash: " + m.getMessageHash()
+                + "\nRecipient: +27718693002"
+                + "\nMessage: Hi Mike, can you join us for dinner tonight?";
+        assertEquals(expected, Message.printMessages());
+    }
 }
