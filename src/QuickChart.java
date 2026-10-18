@@ -57,7 +57,15 @@ public class QuickChart {
         while (processedCount < limit) {
             int number = processedCount;
             System.out.println("\n--- Message " + (number + 1) + " of " + limit + " ---");
-        }    
+        }  
+        System.out.print("Enter recipient in international format (example +27718693002): ");
+            String recipient = input.nextLine().trim();
+            Message check = new Message(number, recipient, "placeholder");
+            String recipientStatus = check.checkRecipientCell();
+            if (!recipientStatus.startsWith("Cell phone number successfully")) {
+                System.out.println(recipientStatus);
+                continue;
+            }
     }
     
     
