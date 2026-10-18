@@ -37,6 +37,17 @@ public class QuickChart {
         System.out.println("Total messages successfully sent: " + Message.returnTotalMessagess());
     }
     
+    private static int readPositiveInteger(Scanner input) {
+        while (true) {
+            try {
+                int n = Integer.parseInt(input.nextLine().trim());
+                if (n > 0) return n;
+                System.out.print("Enter a number greater than zero: ");
+            } catch (NumberFormatException e) {
+                System.out.print("Enter a whole number: ");
+            }
+        }
+    }
     
  
 }
