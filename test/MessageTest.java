@@ -60,4 +60,12 @@ public class MessageTest {
         assertEquals("Please enter a message of less than 250 characters.",
                 m.checkMessageLength());
     }
+    
+    @Test
+    public void testMessageHash() {
+        Message m = new Message(0, "+27718693002",
+                "Hi Mike, can you join us for dinner tonight?");
+        String expected = m.getMessageId().substring(0, 2) + ":0:HITONIGHT";
+        assertEquals(expected, m.getMessageHash());
+    }
 }
