@@ -69,6 +69,7 @@ public class RegistrationLoginApp {
 
             user.setLoginDetails(loginUsername, loginPassword);
             System.out.println(user.returnLoginStatus());
+            loggedIn = user.loginUser();
         }
             if (loggedIn){
                 QuickChart.start(input);
