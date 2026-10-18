@@ -91,4 +91,11 @@ public class MessageTest {
         assertEquals("Message successfully sent.", m.SentMessage(1));
     }
     
+    @Test
+    public void testTotalMessagesSent() {
+        Message.resetAll();
+        new Message(0, "+27718693002",
+                "Hi Mike, can you join us for dinner tonight?").SentMessage(1);
+        assertEquals(1, Message.returnTotalMessagess());
+    }
 }
