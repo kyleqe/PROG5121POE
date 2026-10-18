@@ -30,4 +30,12 @@ public class MessageTest {
                 "Hi Mike, can you join us for dinner tonight?");
         assertEquals("Cell phone number successfully captured.", m.checkRecipientCell());
     }
+    
+    @Test
+    public void testIncorrectRecipient() {
+        Message m = new Message(1, "08575975889",
+                "Hi Keegan, did you receive the payment?");
+        assertEquals("Cell phone number incorrectly formatted or does not contain an international code.",
+                m.checkRecipientCell());
+    }
 }
