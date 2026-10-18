@@ -56,15 +56,11 @@ public class Message {
         return "Cell phone number is incorrectly formatted or does not contain an international code.Please try agian";
     }
 
-     public String checkMessageLength() { 
-        if (messageText == null) { 
-            return "Please enter a message of less than 250 characters."; 
-        } 
-        if (messageText.length() <= 250) { 
-            return "Message ready to send."; 
-        } 
-        return "Message exceeds 250 characters by " 
-                + (messageText.length() - 250) + "; please reduce the size."; 
+         public String checkMessageLength() {
+        if (messageText.length() <= 250) {
+            return "Message sent";
+        }
+        return "Please enter a message of less than 250 characters.";
     }
     
      public String createMessageHash() { 
