@@ -17,12 +17,12 @@ public class QuickChart {
     }
     
     public static void start(Scanner input) {
-        System.out.println("\nWelcome to QuickChat.");
+        System.out.println("\n     Welcome to QuickChat.");
         System.out.print("How many messages would you like to enter? ");
         int limit = readPositiveInteger(input);
         boolean running = true;
         while (running) {
-            System.out.println("\nQUICKCHAT MENU");
+            System.out.println("\n     QUICKCHAT MENU");
             System.out.println("1) Send Messages");
             System.out.println("2) Show recently sent messages");
             System.out.println("3) Quit");
@@ -56,7 +56,7 @@ public class QuickChart {
         }
         while (processedCount < limit) {
             int number = processedCount;
-            System.out.println("\n--- Message " + (number + 1) + " of " + limit + " ---");
+            System.out.println("\n    Message " + (number + 1) + " of " + limit);
           
          System.out.print("Enter recipient in international format (example +27718693002): ");
             String recipient = input.nextLine().trim();
