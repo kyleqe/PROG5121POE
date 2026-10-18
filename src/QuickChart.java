@@ -57,8 +57,8 @@ public class QuickChart {
         while (processedCount < limit) {
             int number = processedCount;
             System.out.println("\n--- Message " + (number + 1) + " of " + limit + " ---");
-        }  
-        System.out.print("Enter recipient in international format (example +27718693002): ");
+          
+         System.out.print("Enter recipient in international format (example +27718693002): ");
             String recipient = input.nextLine().trim();
             Message check = new Message(number, recipient, "placeholder");
             String recipientStatus = check.checkRecipientCell();
@@ -66,14 +66,14 @@ public class QuickChart {
                 System.out.println(recipientStatus);
                 continue;
             }
-        System.out.print("Enter your message (maximum 250 characters): ");
+         System.out.print("Enter your message (maximum 250 characters): ");
             Message message = new Message(number, recipient, input.nextLine());
             String status = message.checkMessageLength();
             System.out.println(status);
             if (!status.equals("Message sent")) {
                 continue;
             }
-        System.out.println("\n1) Send Message\n2) Disregard Message\n3) Store Message to send later");
+         System.out.println("\n1) Send Message\n2) Disregard Message\n3) Store Message to send later");
             System.out.print("Your choice: ");
             String choice = input.nextLine().trim();
             if (choice.equals("1")) {
@@ -98,8 +98,7 @@ public class QuickChart {
             } else {
                 System.out.println("Invalid choice. Message was not processed.");
             }
-        }    
+         }    
     }
-    
- 
+    static void resetForTests() { processedCount = 0; Message.resetAll(); }
 }
