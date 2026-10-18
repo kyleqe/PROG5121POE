@@ -52,4 +52,12 @@ public class MessageTest {
         Message m = new Message(0, "+27718693002", text);
         assertEquals("Message sent", m.checkMessageLength());
     }
+    
+    @Test
+    public void testMessageLengthTooLong() {
+        String text = new String(new char[251]).replace('\0', 'a');
+        Message m = new Message(0, "+27718693002", text);
+        assertEquals("Please enter a message of less than 250 characters.",
+                m.checkMessageLength());
+    }
 }
