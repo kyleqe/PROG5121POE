@@ -49,5 +49,12 @@ public class QuickChart {
         }
     }
     
+    private static void sendMessages(Scanner input, int limit) {
+        if (processedCount >= limit) {
+            System.out.println("You have reached the message limit you selected.");
+            return;
+        }
+    }    
+    
  
 }
