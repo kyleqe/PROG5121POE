@@ -68,4 +68,11 @@ public class MessageTest {
         String expected = m.getMessageId().substring(0, 2) + ":0:HITONIGHT";
         assertEquals(expected, m.getMessageHash());
     }
+    
+     @Test
+    public void testMessageHashFormat() {
+        Message m = new Message(0, "+27718693002",
+                "Hi Mike, can you join us for dinner tonight?");
+        assertEquals(true, m.createMessageHash().matches("\\d{2}:0:HITONIGHT"));
+    }
 }
