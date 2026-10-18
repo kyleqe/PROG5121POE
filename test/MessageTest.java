@@ -83,4 +83,12 @@ public class MessageTest {
         assertEquals(true, m.getMessageHash().matches("\\d{2}:1:HIPAYMENT"));
     }
     
+    @Test
+    public void testSendMessage() {
+        Message.resetAll();
+        Message m = new Message(0, "+27718693002",
+                "Hi Mike, can you join us for dinner tonight?");
+        assertEquals("Message successfully sent.", m.SentMessage(1));
+    }
+    
 }
