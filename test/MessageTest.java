@@ -38,4 +38,11 @@ public class MessageTest {
         assertEquals("Cell phone number incorrectly formatted or does not contain an international code.",
                 m.checkRecipientCell());
     }
+    
+    @Test
+    public void testMessageLengthSuccess() {
+        Message m = new Message(0, "+27718693002",
+                "Hi Mike, can you join us for dinner tonight?");
+        assertEquals("Message sent", m.checkMessageLength());
+    }
 }
