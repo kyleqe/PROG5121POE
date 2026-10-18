@@ -23,4 +23,11 @@ public class MessageTest {
                 "Hi Mike, can you join us for dinner tonight?");
         assertEquals(10, m.getMessageId().length());
     }
+    
+    @Test
+    public void testCorrectRecipient() {
+        Message m = new Message(0, "+27718693002",
+                "Hi Mike, can you join us for dinner tonight?");
+        assertEquals("Cell phone number successfully captured.", m.checkRecipientCell());
+    }
 }
