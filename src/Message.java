@@ -117,9 +117,9 @@ public class Message {
         return sb.toString().trim();
     }
      
-     public int returnTotalMessagess() { 
-         return totalSent; 
-     }
+     public static int returnTotalMessagess() {
+    return totalSent;
+}
      
      public void storeMessage() throws IOException {
         Path path = Path.of(STORE_FILE);
