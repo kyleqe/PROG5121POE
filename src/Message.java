@@ -282,5 +282,29 @@ public class Message {
 
     return "Message hash not found.";
 }
+    
+    public static String displayMessageReport() {
+
+    if (storedCount == 0) {
+        return "No stored messages available.";
+    }
+
+    StringBuilder report = new StringBuilder();
+
+    report.append("FULL STORED MESSAGE REPORT\n");
+    report.append("___________________________\n");
+
+    for (int i = 0; i < storedCount; i++) {
+
+        report.append("\nMessage ")
+              .append(i + 1)
+              .append("\n");
+
+        report.append(storedMessages[i].details());
+        report.append("\n--------------------------\n");
+    }
+
+    return report.toString();
+}
            
 }
