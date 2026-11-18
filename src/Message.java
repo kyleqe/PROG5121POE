@@ -68,6 +68,10 @@ public class Message {
         }
     }
     
+    public String getSenderName() {
+       return senderName;
+    }
+    
     private static String createTenDigitId(){
        StringBuilder digits = new StringBuilder();
        while (digits.length()< 10)
