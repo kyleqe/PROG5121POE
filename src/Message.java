@@ -185,7 +185,16 @@ public class Message {
                 .replace("\t", "\\t");
     }
     public static void resetAll() {
-        SENT_MESSAGES.clear();
+        sentMessages = new Message[MAX_MESSAGES];
+        disregardedMessages = new Message[MAX_MESSAGES];
+        storedMessages = new Message[MAX_MESSAGES];
+
+        messageHashes = new String[MAX_MESSAGES];
+        messageIDs = new String[MAX_MESSAGES];
+
+        sentCount = 0;
+        disregardedCount = 0;
+        storedCount = 0;
         totalSent = 0;
     }   
        
