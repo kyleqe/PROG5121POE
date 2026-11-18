@@ -26,7 +26,8 @@ public class QuickChart {
             System.out.println("1) Send Messages");
             System.out.println("2) Show recently sent messages");
             System.out.println("3) Quit");
-            System.out.print("Choose an option (1-3): ");
+            System.out.println("4) Stored Messages");
+            System.out.print("Choose an option (1-4): ");
             switch (input.nextLine().trim()) {
                 case "1": sendMessages(input, limit); break;
                 case "2": System.out.println("Coming Soon."); break;
