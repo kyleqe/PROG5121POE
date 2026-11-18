@@ -39,6 +39,7 @@ public class Message {
    private final String recipient;
    private final String messageText;
    private final String messageHash;
+   private final String senderName;
 
     /**
      * @param args the command line arguments
