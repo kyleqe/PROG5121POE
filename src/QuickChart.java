@@ -75,7 +75,7 @@ public class QuickChart {
                 continue;
             }
          System.out.print("Enter your message (maximum 250 characters): ");
-            Message message = new Message(number, recipient, input.nextLine());
+            Message message = new Message(number, recipient, input.nextLine(), senderName);
             String status = message.checkMessageLength();
             System.out.println(status);
             if (!status.equals("Message sent")) {
