@@ -86,6 +86,13 @@ public class Message {
         return word.replaceAll("[^A-Za-z0-9]", ""); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    public String details() {
+    return "Message ID: " + messageId
+            + "\nMessage Hash: " + messageHash
+            + "\nRecipient: " + recipient
+            + "\nMessage: " + messageText;
+}
+    
      public String SentMessage(int choice) { 
        switch (choice) {
         case 1:
