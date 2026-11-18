@@ -292,4 +292,19 @@ public void testFiveMessages() throws Exception {
 
     assertEquals(2, countStoredMessagesInReport());
 }
+
+private int countStoredMessagesInReport() {
+
+    String report = Message.displayMessageReport();
+
+    int count = 0;
+    int position = 0;
+
+    while ((position = report.indexOf("Message ID:", position)) != -1) {
+        count++;
+        position++;
+    }
+
+    return count;
+}
 }
