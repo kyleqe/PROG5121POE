@@ -4,7 +4,7 @@
  */
  
 import java.util.Scanner;
- 
+import java.io.IOException;
 /**
  *
  * @author Kylen
@@ -17,6 +17,11 @@ public class QuickChart {
     }
     
     public static void start(Scanner input) {
+        try {
+    Message.loadStoredMessages();
+     } catch (IOException e) {
+    System.out.println("Could not load stored messages: " + e.getMessage());
+      }
         System.out.println("\n     Welcome to QuickChat.");
         System.out.print("How many messages would you like to enter? ");
         int limit = readPositiveInteger(input);
