@@ -72,7 +72,7 @@ public class RegistrationLoginApp {
             loggedIn = user.loginUser();
         }
             if (loggedIn){
-                QuickChart.start(input);
+                QuickChart.start(input,firstName + "," + lastName);
             } else {
                 System.out.println("Too many failed attempts. You cannot access QuickChat.");
             }
