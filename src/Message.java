@@ -114,20 +114,20 @@ public class Message {
             return "Disregarded message array is full.";
 
         case 3:
-            try {
-                storeMessage();
+    if (storedCount >= MAX_MESSAGES) {
+        return "Stored message array is full.";
+    }
 
-                if (storedCount < MAX_MESSAGES) {
-                    storedMessages[storedCount++] = this;
-                    addMessageDetails();
-                    return "Message successfully stored.";
-                }
+    try {
+        storeMessage();
+        storedMessages[storedCount++] = this;
+        addMessageDetails();
 
-                return "Stored message array is full.";
-            } catch (IOException e) {
-                return "Could not store message: " + e.getMessage();
-            }
+        return "Message successfully stored.";
 
+    } catch (IOException e) {
+        return "Could not store message: " + e.getMessage();
+    }
         default:
             return "Invalid choice. Message was not processed.";
     }
