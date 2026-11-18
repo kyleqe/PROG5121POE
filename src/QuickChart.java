@@ -102,5 +102,74 @@ public class QuickChart {
             }
          }    
     }
+    private static void storedMessagesMenu(Scanner input) {
+
+    boolean running = true;
+
+    while (running) {
+
+        System.out.println("\n     STORED MESSAGES MENU");
+        System.out.println("1) Display senders and recipients");
+        System.out.println("2) Display longest stored message");
+        System.out.println("3) Search message by ID");
+        System.out.println("4) Search messages by recipient");
+        System.out.println("5) Delete message by hash");
+        System.out.println("6) Display full message report");
+        System.out.println("7) Return to main menu");
+
+        System.out.print("Choose an option: ");
+
+        String choice = input.nextLine().trim();
+
+        switch (choice) {
+
+            case "1":
+                System.out.println(
+                    Message.displaySendersAndRecipients());
+                break;
+
+            case "2":
+                System.out.println(
+                    Message.displayLongestMessage());
+                break;
+
+            case "3":
+                System.out.print("Enter message ID: ");
+                String id = input.nextLine().trim();
+
+                System.out.println(
+                    Message.searchMessageByID(id));
+                break;
+
+            case "4":
+                System.out.print("Enter recipient number: ");
+                String recipient = input.nextLine().trim();
+
+                System.out.println(
+                    Message.searchMessagesByRecipient(recipient));
+                break;
+
+            case "5":
+                System.out.print("Enter message hash: ");
+                String hash = input.nextLine().trim();
+
+                System.out.println(
+                    Message.deleteMessageByHash(hash));
+                break;
+
+            case "6":
+                System.out.println(
+                    Message.displayMessageReport());
+                break;
+
+            case "7":
+                running = false;
+                break;
+
+            default:
+                System.out.println("Invalid option. Please try again.");
+        }
+    }
+}
     static void resetForTests() { processedCount = 0; Message.resetAll(); }
 }
