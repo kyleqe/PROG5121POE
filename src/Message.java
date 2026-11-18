@@ -249,5 +249,17 @@ public class Message {
     return "Longest stored message:\n"
             + longest.getMessageText();
 }
+    
+    public static String searchMessageByID(String searchID) {
+
+    for (int i = 0; i < storedCount; i++) {
+
+        if (storedMessages[i].getMessageId().equals(searchID)) {
+            return storedMessages[i].details();
+        }
+    }
+
+    return "Message ID not found.";
+}
            
 }
