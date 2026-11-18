@@ -210,5 +210,23 @@ public class Message {
     public String getMessageHash(){return messageHash;}
     public String getRecipient(){return recipient;}
     public String getMessageText(){return messageText;}
+    
+    public static String displaySendersAndRecipients() {
+
+    if (storedCount == 0) {
+        return "No stored messages available.";
+    }
+
+    StringBuilder result = new StringBuilder();
+
+    for (int i = 0; i < storedCount; i++) {
+        result.append("Sender: Not recorded")
+              .append("\nRecipient: ")
+              .append(storedMessages[i].getRecipient())
+              .append("\n\n");
+    }
+
+    return result.toString();
+}
            
 }
