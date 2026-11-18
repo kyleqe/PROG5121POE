@@ -87,24 +87,52 @@ public class Message {
     }
     
      public String SentMessage(int choice) { 
-        switch (choice) {
-            case 1:
-                SENT_MESSAGES.add(this);
+       switch (choice) {
+        case 1:
+            if (sentCount < MAX_MESSAGES) {
+                sentMessages[sentCount++] = this;
                 totalSent++;
+                addMessageDetails();
                 return "Message successfully sent.";
-            case 2:
-                return "Press 0 to delete the message.";
-            case 3:
-                try {
-                    storeMessage();
+            }
+            return "Sent message array is full.";
+
+        case 2:
+            if (disregardedCount < MAX_MESSAGES) {
+                disregardedMessages[disregardedCount++] = this;
+                addMessageDetails();
+                return "Message successfully disregarded.";
+            }
+            return "Disregarded message array is full.";
+
+        case 3:
+            try {
+                storeMessage();
+
+                if (storedCount < MAX_MESSAGES) {
+                    storedMessages[storedCount++] = this;
+                    addMessageDetails();
                     return "Message successfully stored.";
-                } catch (IOException e) {
-                    return "Could not store message: " + e.getMessage();
                 }
-            default:
-                return "Invalid choice. Message was not processed.";
-        } 
-     }
+
+                return "Stored message array is full.";
+            } catch (IOException e) {
+                return "Could not store message: " + e.getMessage();
+            }
+
+        default:
+            return "Invalid choice. Message was not processed.";
+    }
+   }
+
+     private void addMessageDetails() {
+    int index = sentCount + disregardedCount + storedCount - 1;
+
+    if (index >= 0 && index < MAX_MESSAGES) {
+        messageHashes[index] = messageHash;
+        messageIDs[index] = messageId;
+      }
+   }
      
      public String details() {
         return "Message ID: "+messageId
