@@ -16,7 +16,7 @@ public class QuickChart {
         RegistrationLoginApp.main(args);
     }
     
-    public static void start(Scanner input) {
+    public static void start(Scanner input, String senderName) {
         try {
     Message.loadStoredMessages();
      } catch (IOException e) {
