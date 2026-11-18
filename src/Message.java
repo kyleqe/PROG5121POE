@@ -261,5 +261,26 @@ public class Message {
 
     return "Message ID not found.";
 }
+    
+    public static String deleteMessageByHash(String hash) {
+
+    for (int i = 0; i < storedCount; i++) {
+
+        if (storedMessages[i].getMessageHash().equals(hash)) {
+
+            // Remove the message from the stored array
+            for (int j = i; j < storedCount - 1; j++) {
+                storedMessages[j] = storedMessages[j + 1];
+            }
+
+            storedMessages[storedCount - 1] = null;
+            storedCount--;
+
+            return "Message successfully deleted.";
+        }
+    }
+
+    return "Message hash not found.";
+}
            
 }
