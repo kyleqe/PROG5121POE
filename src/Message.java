@@ -277,14 +277,27 @@ public class Message {
     for (int i = 0; i < storedCount; i++) {
 
         if (storedMessages[i].getMessageHash().equals(hash)) {
-
-            // Remove the message from the stored array
+            
             for (int j = i; j < storedCount - 1; j++) {
                 storedMessages[j] = storedMessages[j + 1];
             }
 
             storedMessages[storedCount - 1] = null;
             storedCount--;
+            
+            try {
+                saveStoredMessages();
+            } catch (IOException e) {
+                
+                for (int j = storedCount; j > i; j--) {
+                    storedMessages[j] = storedMessages[j - 1];
+                }
+
+                storedMessages[i] = deletedMessage;
+                storedCount++;
+
+                return "Could not delete message: " + e.getMessage();
+            }
 
             return "Message successfully deleted.";
         }
