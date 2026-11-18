@@ -228,5 +228,26 @@ public class Message {
 
     return result.toString();
 }
+    
+    public static String displayLongestMessage() {
+
+    if (storedCount == 0) {
+        return "No stored messages available.";
+    }
+
+    Message longest = storedMessages[0];
+
+    for (int i = 1; i < storedCount; i++) {
+
+        if (storedMessages[i].getMessageText().length()
+                > longest.getMessageText().length()) {
+
+            longest = storedMessages[i];
+        }
+    }
+
+    return "Longest stored message:\n"
+            + longest.getMessageText();
+}
            
 }
