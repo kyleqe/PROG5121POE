@@ -92,7 +92,7 @@ public class QuickChart {
                 System.out.println(message.SentMessage(2));
                 System.out.print("Enter 0 to confirm disregard: ");
                 if (input.nextLine().trim().equals("0")) {
-                    System.out.println("Message disregarded.");
+                    System.out.println(message.SentMessage(2));
                     processedCount++;
                 } else {
                     System.out.println("Disregard cancelled; message not processed.");
