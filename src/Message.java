@@ -203,6 +203,7 @@ public class Message {
         disregardedCount = 0;
         storedCount = 0;
         totalSent = 0;
+        allMessageCount = 0;
     }   
        
     public String getMessageId(){return messageId;}
