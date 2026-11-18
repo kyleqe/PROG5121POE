@@ -38,6 +38,7 @@ public class QuickChart {
                 case "1": sendMessages(input, limit); break;
                 case "2": System.out.println(Message.printMessages()); break;
                 case "3": running = false; System.out.println("Thank you for using QuickChat."); break;
+                case "4":storedMessagesMenu(input); break;
                 default: System.out.println("Invalid option. Please enter 1, 2, or 3.");
             }
         }
