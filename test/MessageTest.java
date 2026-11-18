@@ -245,4 +245,51 @@ public void testDisplayMessageReport() {
     assertTrue(Message.displayMessageReport()
             .contains(m.getMessageHash()));
 }
+
+@Test
+public void testFiveMessages() throws Exception {
+
+    Message.resetAll();
+
+    java.nio.file.Files.deleteIfExists(
+            java.nio.file.Path.of(Message.STORE_FILE)
+    );
+
+    Message first = new Message(0, "+27838884567",
+            "Did you get the cake?");
+
+    Message second = new Message(1, "+27838884567",
+            "Where are you? You are late! I have asked you to be on time.");
+
+    Message third = new Message(2, "+27838884567",
+            "Yohoooo, I am at your gate.");
+
+    Message fourth = new Message(3, "+27838884567",
+            "It is dinner time !");
+
+    Message fifth = new Message(4, "+27838884567",
+            "Ok, I am leaving without you.");
+
+    assertEquals("Message successfully sent.", first.SentMessage(1));
+
+    assertEquals("Message successfully stored.", second.SentMessage(3));
+
+    assertEquals("Message successfully disregarded.", third.SentMessage(2));
+
+    assertEquals("Message successfully sent.", fourth.SentMessage(1));
+
+    assertEquals("Message successfully stored.", fifth.SentMessage(3));
+
+    String recipientResults =
+            Message.searchMessagesByRecipient("+27838884567");
+
+    assertTrue(recipientResults.contains(second.getMessageText()));
+    assertTrue(recipientResults.contains(fifth.getMessageText()));
+
+    assertFalse(recipientResults.contains(first.getMessageText()));
+    assertFalse(recipientResults.contains(third.getMessageText()));
+    assertFalse(recipientResults.contains(fourth.getMessageText()));
+
+    assertEquals(2, countStoredMessagesInReport());
+}
 }
