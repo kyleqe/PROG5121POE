@@ -518,4 +518,28 @@ public class Message {
 
     throw new IOException("Unterminated JSON value: " + key);
 }
+    
+    private static void saveStoredMessages() throws IOException {
+
+    StringBuilder json = new StringBuilder("[");
+    
+    for (int i = 0; i < storedCount; i++) {
+
+        if (i > 0) {
+            json.append(",");
+        }
+
+        json.append(storedMessages[i].toJson());
+    }
+
+    json.append("]");
+
+    Files.writeString(
+            Path.of(STORE_FILE),
+            json.toString(),
+            StandardCharsets.UTF_8,
+            StandardOpenOption.CREATE,
+            StandardOpenOption.TRUNCATE_EXISTING
+    );
+}
 }
