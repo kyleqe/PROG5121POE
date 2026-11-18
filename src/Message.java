@@ -278,6 +278,8 @@ public class Message {
 
         if (storedMessages[i].getMessageHash().equals(hash)) {
             
+             Message deletedMessage = storedMessages[i];
+            
             for (int j = i; j < storedCount - 1; j++) {
                 storedMessages[j] = storedMessages[j + 1];
             }
