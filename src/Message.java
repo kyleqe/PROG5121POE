@@ -198,6 +198,7 @@ public class Message {
       public String toJson() {
         return "{\"messageId\":\"" + esc(messageId)
             + "\",\"messageHash\":\"" + esc(messageHash)
+            + "\",\"senderName\":\"" + esc(senderName)
             + "\",\"recipient\":\"" + esc(recipient)
             + "\",\"message\":\"" + esc(messageText) 
             + "\"}";
