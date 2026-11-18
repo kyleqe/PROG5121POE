@@ -399,4 +399,46 @@ public class Message {
         messageHashes[i] = storedMessages[i].getMessageHash();
     }
 }
+    
+    private static int findJsonObjectEnd(String json, int start) {
+
+    boolean insideString = false;
+    boolean escaped = false;
+    int depth = 0;
+
+    for (int i = start; i < json.length(); i++) {
+
+        char c = json.charAt(i);
+
+        if (escaped) {
+            escaped = false;
+            continue;
+        }
+
+        if (c == '\\' && insideString) {
+            escaped = true;
+            continue;
+        }
+
+        if (c == '"') {
+            insideString = !insideString;
+            continue;
+        }
+
+        if (!insideString) {
+
+            if (c == '{') {
+                depth++;
+            } else if (c == '}') {
+                depth--;
+
+                if (depth == 0) {
+                    return i;
+                }
+            }
+        }
+    }
+
+    return -1;
+}
 }
