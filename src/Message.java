@@ -44,11 +44,21 @@ public class Message {
      * @param args the command line arguments
      */
     public Message(int messageNumber, String recipient, String messageText) {
+        this(messageNumber, recipient, messageText, createTenDigitId(), null);
+    }
+    
+    private Message(int messageNumber, String recipient, String messageText,
+                String messageId, String messageHash) {
         this.messageNumber = messageNumber;
         this.recipient = recipient;
         this.messageText = messageText;
         this.messageId = createTenDigitId();
+        
+        if  (messageHash == null || messageHash.isEmpty()) {
         this.messageHash = createMessageHash();
+        } else {
+            this.messageHash = messageHash;
+        }
     }
     
     private String createTenDigitId(){
