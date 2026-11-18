@@ -134,13 +134,12 @@ public class Message {
    }
 
      private void addMessageDetails() {
-    int index = sentCount + disregardedCount + storedCount - 1;
-
-    if (index >= 0 && index < MAX_MESSAGES) {
-        messageHashes[index] = messageHash;
-        messageIDs[index] = messageId;
-      }
-   }
+    if (allMessageCount < MAX_MESSAGES) {
+        messageHashes[allMessageCount] = messageHash;
+        messageIDs[allMessageCount] = messageId;
+        allMessageCount++;
+    }
+}
      
      public static String printMessages() {
         if (sentCount == 0) {
