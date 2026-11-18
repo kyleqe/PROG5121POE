@@ -35,7 +35,7 @@ public class QuickChart {
             System.out.print("Choose an option (1-4): ");
             
             switch (input.nextLine().trim()) {
-                case "1": sendMessages(input, limit); break;
+                case "1": sendMessages(input, limit, senderName); break;
                 case "2": System.out.println(Message.printMessages()); break;
                 case "3": running = false; System.out.println("Thank you for using QuickChat."); break;
                 case "4":storedMessagesMenu(input); break;
