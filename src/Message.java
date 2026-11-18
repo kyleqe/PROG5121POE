@@ -19,7 +19,7 @@ import java.util.UUID;
 public class Message {
     
     public static final String STORE_FILE = "messages.json";
-    private static final int MAX_MESSAGES = 100;
+     private static final int MAX_MESSAGES = 100;
 
     private static Message[] sentMessages = new Message[MAX_MESSAGES];
     private static Message[] disregardedMessages = new Message[MAX_MESSAGES];
