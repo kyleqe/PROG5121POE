@@ -335,4 +335,68 @@ public class Message {
 
     return result.toString();
 }
+    
+    public static void loadStoredMessages() throws IOException {
+
+    Path path = Path.of(STORE_FILE);
+
+    storedMessages = new Message[MAX_MESSAGES];
+    storedCount = 0;
+
+    if (!Files.exists(path)) {
+        return;
+    }
+
+    String json = Files.readString(path, StandardCharsets.UTF_8).trim();
+
+    if (json.isEmpty() || json.equals("[]")) {
+        return;
+    }
+
+    int position = 0;
+
+    while (position < json.length()) {
+
+        int start = json.indexOf('{', position);
+
+        if (start == -1) {
+            break;
+        }
+
+        int end = findJsonObjectEnd(json, start);
+
+        if (end == -1) {
+            throw new IOException("Invalid JSON in messages.json.");
+        }
+
+        String object = json.substring(start, end + 1);
+
+        String id = getJsonValue(object, "messageId");
+        String hash = getJsonValue(object, "messageHash");
+        String recipient = getJsonValue(object, "recipient");
+        String message = getJsonValue(object, "message");
+
+        if (id == null || hash == null || recipient == null || message == null) {
+            throw new IOException("A stored message has missing information.");
+        }
+
+        if (storedCount >= MAX_MESSAGES) {
+            throw new IOException("Stored message limit exceeded.");
+        }
+
+        Message loaded = new Message(
+                storedCount + 1, recipient, message, id, hash
+        );
+
+        storedMessages[storedCount] = loaded;
+        storedCount++;
+
+        position = end + 1;
+    }
+
+    for (int i = 0; i < storedCount; i++) {
+        messageIDs[i] = storedMessages[i].getMessageId();
+        messageHashes[i] = storedMessages[i].getMessageHash();
+    }
+}
 }
