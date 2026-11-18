@@ -44,15 +44,21 @@ public class Message {
     /**
      * @param args the command line arguments
      */
-    public Message(int messageNumber, String recipient, String messageText) {
-        this(messageNumber, recipient, messageText, createTenDigitId(), null);
+   public Message(int messageNumber, String recipient, String messageText) {
+    this(messageNumber, recipient, messageText,
+            "Not recorded", createTenDigitId(), null);
+    }
+
+    public Message(int messageNumber, String recipient, String messageText, String senderName) {
+        this(messageNumber, recipient, messageText, senderName, createTenDigitId(), null);
     }
     
-    private Message(int messageNumber, String recipient, String messageText,
+    private Message(int messageNumber, String recipient, String messageText, String senderName,
                 String messageId, String messageHash) {
         this.messageNumber = messageNumber;
         this.recipient = recipient;
         this.messageText = messageText;
+        this.senderName = senderName;
         this.messageId = createTenDigitId();
         
         if  (messageHash == null || messageHash.isEmpty()) {
