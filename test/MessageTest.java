@@ -121,4 +121,148 @@ public void testIncorrectRecipient() {
                 + "\nMessage: Hi Mike, can you join us for dinner tonight?";
         assertEquals(expected, Message.printMessages());
     }
+    
+    @Test
+public void testStoreMessage() throws Exception {
+    Message.resetAll();
+
+    java.nio.file.Files.deleteIfExists(
+            java.nio.file.Path.of(Message.STORE_FILE)
+    );
+
+    Message m = new Message(1, "+27838884567",
+            "Where are you? You are late! I have asked you to be on time.");
+
+    assertEquals("Message successfully stored.", m.SentMessage(3));
+
+    assertTrue(Message.displayMessageReport().contains(
+            "Where are you? You are late! I have asked you to be on time."
+    ));
+}
+
+@Test
+public void testDisregardMessage() {
+    Message.resetAll();
+
+    Message m = new Message(2, "+27838884567",
+            "Yohoooo, I am at your gate.");
+
+    assertEquals("Message successfully disregarded.", m.SentMessage(2));
+    assertEquals(0, Message.returnTotalMessagess());
+}
+
+@Test
+public void testSearchMessageByID() {
+    Message.resetAll();
+
+    Message m = new Message(1, "+27838884567",
+            "Where are you? You are late! I have asked you to be on time.");
+
+    m.SentMessage(3);
+
+    assertTrue(Message.searchMessageByID(m.getMessageId())
+            .contains(m.getMessageId()));
+}
+
+@Test
+public void testSearchMessagesByRecipient() {
+    Message.resetAll();
+
+    Message first = new Message(1, "+27838884567",
+            "Where are you? You are late! I have asked you to be on time.");
+
+    Message second = new Message(2, "+27838884567",
+            "Ok, I am leaving without you.");
+
+    first.SentMessage(3);
+    second.SentMessage(3);
+
+    String result = Message.searchMessagesByRecipient("+27838884567");
+
+    assertTrue(result.contains(first.getMessageText()));
+    assertTrue(result.contains(second.getMessageText()));
+}
+
+@Test
+public void testDeleteMessageByHash() {
+    Message.resetAll();
+
+    Message m = new Message(1, "+27838884567",
+            "Ok, I am leaving without you.");
+
+    m.SentMessage(3);
+
+    assertEquals("Message successfully deleted.",
+            Message.deleteMessageByHash(m.getMessageHash()));
+
+    assertEquals("Message hash not found.",
+            Message.deleteMessageByHash(m.getMessageHash()));
+}
+
+@Test
+public void testDisplayLongestMessage() {
+    Message.resetAll();
+
+    Message shortMessage = new Message(1, "+27838884567",
+            "Hello.");
+
+    Message longMessage = new Message(2, "+27838884567",
+            "Where are you? You are late! I have asked you to be on time.");
+
+    shortMessage.SentMessage(3);
+    longMessage.SentMessage(3);
+
+    assertTrue(Message.displayLongestMessage()
+            .contains(longMessage.getMessageText()));
+}
+
+@Test
+public void testDisplaySendersAndRecipients() {
+    Message.resetAll();
+
+    Message m = new Message(1, "+27838884567",
+            "Ok, I am leaving without you.");
+
+    m.SentMessage(3);
+
+    String result = Message.displaySendersAndRecipients();
+
+    assertTrue(result.contains("+27838884567"));
+}
+
+@Test
+public void testDisplayMessageReport() {
+    Message.resetAll();
+
+    Message m = new Message(1, "+27838884567",
+            "Ok, I am leaving without you.");
+
+    m.SentMessage(3);
+
+    assertTrue(Message.displayMessageReport()
+            .contains(m.getMessageId()));
+
+    assertTrue(Message.displayMessageReport()
+            .contains(m.getMessageHash()));
+}
+
+@Test
+public void testStoreMessage() throws Exception {
+    Message.resetAll();
+
+    java.nio.file.Files.deleteIfExists(
+            java.nio.file.Path.of(Message.STORE_FILE)
+    );
+
+    Message m = new Message(1, "+27838884567",
+            "Where are you? You are late! I have asked you to be on time.");
+
+    assertEquals("Message successfully stored.", m.SentMessage(3));
+
+    assertTrue(Message.displayMessageReport().contains(
+            "Where are you? You are late! I have asked you to be on time."
+    ));
+}
+
+
 }
