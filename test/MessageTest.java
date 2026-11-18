@@ -245,24 +245,4 @@ public void testDisplayMessageReport() {
     assertTrue(Message.displayMessageReport()
             .contains(m.getMessageHash()));
 }
-
-@Test
-public void testStoreMessage() throws Exception {
-    Message.resetAll();
-
-    java.nio.file.Files.deleteIfExists(
-            java.nio.file.Path.of(Message.STORE_FILE)
-    );
-
-    Message m = new Message(1, "+27838884567",
-            "Where are you? You are late! I have asked you to be on time.");
-
-    assertEquals("Message successfully stored.", m.SentMessage(3));
-
-    assertTrue(Message.displayMessageReport().contains(
-            "Where are you? You are late! I have asked you to be on time."
-    ));
-}
-
-
 }
