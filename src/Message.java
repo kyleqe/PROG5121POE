@@ -441,4 +441,81 @@ public class Message {
 
     return -1;
 }
+    
+    private static String getJsonValue(String object, String key)
+        throws IOException {
+
+    String search = "\"" + key + "\"";
+    int keyPosition = object.indexOf(search);
+
+    if (keyPosition == -1) {
+        return null;
+    }
+
+    int colon = object.indexOf(':', keyPosition + search.length());
+
+    if (colon == -1) {
+        throw new IOException("Invalid JSON field: " + key);
+    }
+
+    int start = object.indexOf('"', colon + 1);
+
+    if (start == -1) {
+        throw new IOException("Invalid JSON value: " + key);
+    }
+
+    StringBuilder value = new StringBuilder();
+    boolean escaped = false;
+
+    for (int i = start + 1; i < object.length(); i++) {
+
+        char c = object.charAt(i);
+
+        if (escaped) {
+
+            switch (c) {
+                case '"': value.append('"'); break;
+                case '\\': value.append('\\'); break;
+                case '/': value.append('/'); break;
+                case 'n': value.append('\n'); break;
+                case 'r': value.append('\r'); break;
+                case 't': value.append('\t'); break;
+                case 'b': value.append('\b'); break;
+                case 'f': value.append('\f'); break;
+
+                case 'u':
+                    if (i + 4 >= object.length()) {
+                        throw new IOException("Invalid Unicode escape.");
+                    }
+
+                    try {
+                        value.append((char) Integer.parseInt(
+                                object.substring(i + 1, i + 5), 16
+                        ));
+                    } catch (NumberFormatException e) {
+                        throw new IOException("Invalid Unicode escape.");
+                    }
+
+                    i += 4;
+                    break;
+
+                default:
+                    throw new IOException("Invalid JSON escape.");
+            }
+
+            escaped = false;
+
+        } else if (c == '\\') {
+            escaped = true;
+
+        } else if (c == '"') {
+            return value.toString();
+
+        } else {
+            value.append(c);
+        }
+    }
+
+    throw new IOException("Unterminated JSON value: " + key);
+}
 }
