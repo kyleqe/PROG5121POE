@@ -134,23 +134,19 @@ public class Message {
       }
    }
      
-     public String details() {
-        return "Message ID: "+messageId
-                +"\nMessage Hash: "+messageHash
-                +"\nRecipient: "+recipient
-                +"\nMessage: "+messageText;
-    }
-     
      public static String printMessages() {
-        if (SENT_MESSAGES.isEmpty()) {
-            return "No messages have been sent yet.";
-        }
-        StringBuilder sb = new StringBuilder();
-        for (Message m : SENT_MESSAGES) {
-            sb.append(m.details()).append("\n\n");
-        }
-        return sb.toString().trim();
+        if (sentCount == 0) {
+        return "No messages have been sent yet.";
     }
+
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = 0; i < sentCount; i++) {
+        sb.append(sentMessages[i].details()).append("\n\n");
+    }
+
+    return sb.toString().trim();
+}
      
      public static int returnTotalMessagess() {
     return totalSent;
