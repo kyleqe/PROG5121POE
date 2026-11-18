@@ -401,8 +401,13 @@ public class Message {
 
         String id = getJsonValue(object, "messageId");
         String hash = getJsonValue(object, "messageHash");
+        String sender = getJsonValue(object, "senderName");
         String recipient = getJsonValue(object, "recipient");
         String message = getJsonValue(object, "message");
+        
+        if (sender == null || sender.isEmpty()) {
+            sender = "Not recorded";
+        }
 
         if (id == null || hash == null || recipient == null || message == null) {
             throw new IOException("A stored message has missing information.");
@@ -413,7 +418,7 @@ public class Message {
         }
 
         Message loaded = new Message(
-                storedCount + 1, recipient, message, id, hash
+                storedCount + 1, recipient, message, sender, id, hash
         );
 
         storedMessages[storedCount] = loaded;
