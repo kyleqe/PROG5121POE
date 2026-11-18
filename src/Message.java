@@ -306,5 +306,23 @@ public class Message {
 
     return report.toString();
 }
-           
+      
+    public static String searchMessagesByRecipient(String recipient) {
+
+    StringBuilder result = new StringBuilder();
+
+    for (int i = 0; i < storedCount; i++) {
+
+        if (storedMessages[i].getRecipient().equals(recipient)) {
+            result.append(storedMessages[i].details())
+                  .append("\n\n");
+        }
+    }
+
+    if (result.length() == 0) {
+        return "No messages found for this recipient.";
+    }
+
+    return result.toString();
+}
 }
