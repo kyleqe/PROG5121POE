@@ -32,6 +32,7 @@ public class Message {
     private static int disregardedCount = 0;
     private static int storedCount = 0;
     private static int totalSent = 0;
+    private static int allMessageCount = 0;
     
    private final String messageId;
    private final int messageNumber;
