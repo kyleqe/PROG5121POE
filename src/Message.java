@@ -61,7 +61,7 @@ public class Message {
         }
     }
     
-    private String createTenDigitId(){
+    private static String createTenDigitId(){
        StringBuilder digits = new StringBuilder();
        while (digits.length()< 10)
            digits.append(UUID.randomUUID().toString().replaceAll("[^0-9]",""));
