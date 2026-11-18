@@ -241,7 +241,8 @@ public class Message {
     StringBuilder result = new StringBuilder();
 
     for (int i = 0; i < storedCount; i++) {
-        result.append("Sender: Not recorded")
+        result.append("Sender: ")
+              .append(storedMessages[i].getSenderName())
               .append("\nRecipient: ")
               .append(storedMessages[i].getRecipient())
               .append("\n\n");
